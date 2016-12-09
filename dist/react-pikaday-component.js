@@ -89,20 +89,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function ReactPikadayComponent() {
 	        _classCallCheck(this, ReactPikadayComponent);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactPikadayComponent).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (ReactPikadayComponent.__proto__ || Object.getPrototypeOf(ReactPikadayComponent)).apply(this, arguments));
 	    }
 
 	    _createClass(ReactPikadayComponent, [{
 	        key: 'componentDidMount',
-
-
-	        // see Pikaday options at https://github.com/dbushell/Pikaday#configuration
-	        // except `onSelect` and `field`
 	        value: function componentDidMount() {
-	            var _getValueLink2 = this._getValueLink(this.props);
-
-	            var value = _getValueLink2.value;
-
+	            var _getValueLink2 = this._getValueLink(this.props),
+	                value = _getValueLink2.value;
 
 	            this._setupPikaday();
 	            this._setDateIfChanged(value);
@@ -138,14 +132,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _props = this.props;
-	            var id = _props.id;
-	            var className = _props.className;
-	            var name = _props.name;
-	            var disabled = _props.disabled;
-	            var placeholder = _props.placeholder;
-	            var readOnly = _props.readOnly;
-	            var style = _props.style;
+	            var _props = this.props,
+	                id = _props.id,
+	                className = _props.className,
+	                name = _props.name,
+	                disabled = _props.disabled,
+	                placeholder = _props.placeholder,
+	                readOnly = _props.readOnly,
+	                style = _props.style;
 
 
 	            return _react2.default.createElement('input', {
@@ -155,10 +149,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	                name: name,
 	                className: className,
 	                style: style,
+	                onChange: this.onInputChange,
+	                onBlur: this.onInputBlur,
 	                placeholder: placeholder,
 	                disabled: disabled,
 	                readOnly: readOnly
 	            });
+	        }
+	    }, {
+	        key: 'onInputBlur',
+	        value: function onInputBlur(e) {
+	            if (this.props.onInputChange) {
+	                this.props.onInputChange(e.target.value);
+	            }
+	        }
+	    }, {
+	        key: 'onInputBlur',
+	        value: function onInputBlur(e) {
+	            if (this.props.onInputBlur) {
+	                this.props.onInputBlur(e.target.value);
+	            }
 	        }
 	    }, {
 	        key: '_getValueLink',
@@ -173,15 +183,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function _setupPikaday() {
 	            var el = this.refs.pikaday;
 
-	            var _getValueLink3 = this._getValueLink(this.props);
+	            var _getValueLink3 = this._getValueLink(this.props),
+	                requestChange = _getValueLink3.requestChange;
 
-	            var requestChange = _getValueLink3.requestChange;
-	            var _props2 = this.props;
-	            var value = _props2.value;
-	            var onChange = _props2.onChange;
-	            var valueLink = _props2.valueLink;
-
-	            var pikadayOptions = _objectWithoutProperties(_props2, ['value', 'onChange', 'valueLink']); // eslint-disable-line no-unused-vars
+	            var _props2 = this.props,
+	                value = _props2.value,
+	                onChange = _props2.onChange,
+	                valueLink = _props2.valueLink,
+	                pikadayOptions = _objectWithoutProperties(_props2, ['value', 'onChange', 'valueLink']); // eslint-disable-line no-unused-vars
 
 
 	            var options = _extends({}, pikadayOptions, {
@@ -245,12 +254,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    disabled: _react.PropTypes.bool,
 	    placeholder: _react.PropTypes.string,
 	    readOnly: _react.PropTypes.bool,
+	    onInputBlur: _react.PropTypes.func,
+	    onInputChange: _react.PropTypes.func,
 	    name: _react.PropTypes.string,
 	    style: _react.PropTypes.object,
 	    valueLink: _react.PropTypes.shape({
 	        value: _react.PropTypes.instanceOf(Date),
 	        requestChange: _react.PropTypes.func.isRequired
-	    }) };
+	    })
+
+	    // see Pikaday options at https://github.com/dbushell/Pikaday#configuration
+	    // except `onSelect` and `field`
+	};
 	exports.default = ReactPikadayComponent;
 	module.exports = exports['default'];
 
