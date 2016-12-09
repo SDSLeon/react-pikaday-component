@@ -80,13 +80,13 @@ class ReactPikadayComponent extends React.Component {
 
     onInputBlur(e) { 
         if (this.props.onInputChange) {
-            this.props.onInputChange(e);
+            this.props.onInputChange(e.target.value);
         }
     }
 
     onInputBlur(e) { 
         if (this.props.onInputBlur) {
-            this.props.onInputBlur(e);
+            this.props.onInputBlur(e.target.value);
         }
     }
 
