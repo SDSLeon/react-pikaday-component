@@ -13,6 +13,8 @@ class ReactPikadayComponent extends React.Component {
         disabled: PropTypes.bool,
         placeholder: PropTypes.string,
         readOnly: PropTypes.bool,
+        onInputBlur: PropTypes.func,
+        onInputChange: PropTypes.func,
         name: PropTypes.string,
         style: PropTypes.object,
         valueLink: PropTypes.shape({
@@ -67,11 +69,25 @@ class ReactPikadayComponent extends React.Component {
                 name={name}
                 className={className}
                 style={style}
+                onChange={this.onInputChange}
+                onBlur={this.onInputBlur}
                 placeholder={placeholder}
                 disabled={disabled}
                 readOnly={readOnly}
             />
         );
+    }
+
+    onInputBlur(e) { 
+        if (this.props.onInputChange) {
+            this.props.onInputChange(e);
+        }
+    }
+
+    onInputBlur(e) { 
+        if (this.props.onInputBlur) {
+            this.props.onInputBlur(e);
+        }
     }
 
     _getValueLink(props) {
