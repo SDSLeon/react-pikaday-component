@@ -87,9 +87,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _inherits(ReactPikadayComponent, _React$Component);
 
 	    function ReactPikadayComponent() {
+	        var _ref;
+
+	        var _temp, _this, _ret;
+
 	        _classCallCheck(this, ReactPikadayComponent);
 
-	        return _possibleConstructorReturn(this, (ReactPikadayComponent.__proto__ || Object.getPrototypeOf(ReactPikadayComponent)).apply(this, arguments));
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
+
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReactPikadayComponent.__proto__ || Object.getPrototypeOf(ReactPikadayComponent)).call.apply(_ref, [this].concat(args))), _this), _this.onInputChange = function (e) {
+	            if (_this.props.onInputChange) {
+	                _this.props.onInputChange(e.target.value);
+	            }
+	        }, _this.onInputBlur = function (e) {
+	            if (_this.props.onInputBlur) {
+	                _this.props.onInputBlur(e.target.value);
+	            }
+	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 
 	    _createClass(ReactPikadayComponent, [{
@@ -155,20 +171,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                disabled: disabled,
 	                readOnly: readOnly
 	            });
-	        }
-	    }, {
-	        key: 'onInputBlur',
-	        value: function onInputBlur(e) {
-	            if (this.props.onInputChange) {
-	                this.props.onInputChange(e.target.value);
-	            }
-	        }
-	    }, {
-	        key: 'onInputBlur',
-	        value: function onInputBlur(e) {
-	            if (this.props.onInputBlur) {
-	                this.props.onInputBlur(e.target.value);
-	            }
 	        }
 	    }, {
 	        key: '_getValueLink',

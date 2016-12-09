@@ -58,6 +58,18 @@ class ReactPikadayComponent extends React.Component {
         this.pikaday.destroy();
     }
 
+    onInputChange = (e) => {
+        if (this.props.onInputChange) {
+            this.props.onInputChange(e.target.value);
+        }
+    }
+
+    onInputBlur = (e) => {
+        if (this.props.onInputBlur) {
+            this.props.onInputBlur(e.target.value);
+        }
+    }
+
     render() {
         const { id, className, name, disabled, placeholder, readOnly, style } = this.props;
 
@@ -76,18 +88,6 @@ class ReactPikadayComponent extends React.Component {
                 readOnly={readOnly}
             />
         );
-    }
-
-    onInputBlur(e) {
-        if (this.props.onInputChange) {
-            this.props.onInputChange(e.target.value);
-        }
-    }
-
-    onInputBlur(e) {
-        if (this.props.onInputBlur) {
-            this.props.onInputBlur(e.target.value);
-        }
     }
 
     _getValueLink(props) {
